@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FbLeadsModel extends Model
 {
-    protected $table = 'fbleads';
+    protected $table = 'test-leads';
     protected $fillable = [
         'platform',
         'business_name',
