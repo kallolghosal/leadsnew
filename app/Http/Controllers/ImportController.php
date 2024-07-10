@@ -36,7 +36,6 @@ class ImportController extends Controller
         $request->file('file')->move(public_path('files'), $name);
 
         $csv = [];
-        //dd($request->owner);
 
         if (($file = fopen(public_path('files').'/'.$name, 'r')) === false) {
             throw new Exception('There was an error loading the CSV file.');
@@ -58,7 +57,6 @@ class ImportController extends Controller
             } elseif ($request->owner === 'cac') {
                 $line = fgetcsv($file, 1000, ",");
                 $i = 0;
-                //dd($line);
                 while (($line = fgetcsv($file, 1000)) !== false) {
                     $csv[$i]['form'] = $line[9];
                     $csv[$i]['platform'] = $line[11];
@@ -107,7 +105,6 @@ class ImportController extends Controller
      * Show data from uploaded CSV file
      */
     public function saveFile ($name, $owner) {
-        //dd($owner);
         $file = fopen(public_path('files').'/'.$name, 'r');
         $csv = [];
         if ($file === false) {
@@ -149,7 +146,6 @@ class ImportController extends Controller
                     ];
                 }
                 fclose($file);
-                //dd($csv);
                 CacLeadsModel::insert(mb_convert_encoding($csv, "UTF-8"));
             } else {
                 $line = fgetcsv($file, 1000, ",");

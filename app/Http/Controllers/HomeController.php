@@ -42,7 +42,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show all  WV leads
+     * Show all  CAC leads
      */
     public function cacleads () {
         $cacleads = CacLeadsModel::paginate(12);

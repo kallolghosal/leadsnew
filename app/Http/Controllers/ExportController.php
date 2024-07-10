@@ -31,13 +31,10 @@ class ExportController extends Controller
 
         // Get the list of cities to be included
         $cities = WvCityModel::pluck('city');
-        // dd($cities);
         $range = FbLeadsModel::where('id', '>=', $st)->where('id', '<=', $nd)->pluck('phone', 'id')->toArray();
-        // dd($range);
         $rangeid = FbLeadsModel::where('id', '>=', $st)->where('id', '<=', $nd)->pluck('id')->toArray();
         $leads = FbLeadsModel::whereNotIn('id', $rangeid)->pluck('phone')->toArray();
-        // dd($range);
-        // dd($leads);
+        
         foreach ($range as $k=>$v) {
             if (!in_array($v, $leads)) {
                 array_push($uniqueval, $k);
@@ -49,9 +46,6 @@ class ExportController extends Controller
                 array_push($duplicates, $y);
             }
         }
-        // dd($uniqueval);
-        //dd(array_diff($rangeid, $uniqueval));
-        //dd($duplicates);
 
         /**
          * Dataset for all unique leads in the given range
@@ -64,9 +58,7 @@ class ExportController extends Controller
         /**
          * Dataset of duplicate rows in the given range
          */
-        //$dups = FbLeadsModel::whereIn('id', $duplicates)->get();
         $dups = FbLeadsModel::whereIn('id', $dupids)->get();
-        //dd($data);
 
         if (count($data) == 0){
             return redirect()->back()->with('error', 'No unique row found in range');
@@ -135,10 +127,8 @@ class ExportController extends Controller
         $uniqueval = [];
         $duplicates = [];
         $range = CacLeadsModel::where('id', '>=', $st)->where('id', '<=', $nd)->pluck('phone', 'id')->toArray();
-        //dd($range);
         $rangeid = CacLeadsModel::where('id', '>=', $st)->where('id', '<=', $nd)->pluck('id')->toArray();
         $leads = CacLeadsModel::whereNotIn('id', $rangeid)->pluck('phone')->toArray();
-        //dd($leads);
         foreach ($range as $k=>$v) {
             if (!in_array($v, $leads)) {
                 array_push($uniqueval, $k);
@@ -150,9 +140,6 @@ class ExportController extends Controller
                 array_push($duplicates, $y);
             }
         }
-        //dd($uniqueval);
-        //dd(array_diff($rangeid, $uniqueval));
-        //dd($duplicates);
 
         /**
          * Dataset for all unique leads in the given range
@@ -163,7 +150,6 @@ class ExportController extends Controller
          * Dataset of duplicate rows in the given range
          */
         $dups = CacLeadsModel::whereIn('id', $duplicates)->get();
-        //dd($data);
 
         if (count($data) == 0){
             return redirect()->back()->with('error', 'No unique row found in range');
@@ -246,7 +232,7 @@ class ExportController extends Controller
                 array_push($duplicates, $y);
             }
         }
-        // dd($uniqueval);
+
         /**
          * Dataset for all unique leads in the given range
          */
@@ -256,7 +242,6 @@ class ExportController extends Controller
          * Dataset of duplicate rows in the given range
          */
         $dups = WvMrktLeads::whereIn('id', $duplicates)->get();
-        //dd($data);
 
         if (count($data) == 0){
             return redirect()->back()->with('error', 'No unique row found in range');
