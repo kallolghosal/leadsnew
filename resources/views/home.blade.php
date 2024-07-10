@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h4>Total no of WV leads {{ $leads->count() }}</h4>
+                    <h4>Total no of WV leads {{ $leads }}</h4>
                     <a href="{{ route('wv-leads') }}" class="btn btn-primary btn-sm">View Leads</a>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h4>Total no of WV Market leads {{ $mrktleads->count() }}</h4>
+                    <h4>Total no of WV Market leads {{ $mrktleads }}</h4>
                     <a href="{{ route('wvmarket-leads') }}" class="btn btn-primary btn-sm">View Leads</a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h4>Total no of CAC leads {{ $cacleads->count() }}</h4>
+                    <h4>Total no of CAC leads {{ $cacleads }}</h4>
                     <a href="{{ route('cac-leads') }}" class="btn btn-primary btn-sm">View Leads</a>
                 </div>
             </div>
