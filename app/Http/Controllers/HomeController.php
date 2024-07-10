@@ -26,9 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $fbleads = FbLeadsModel::all();
-        $cacleads = CacLeadsModel::all();
-        $mrktleads = WvMrktLeads::all();
+        $fbleads = FbLeadsModel::count();
+        $cacleads = CacLeadsModel::count();
+        $mrktleads = WvMrktLeads::count();
         return view('home', ['leads' => $fbleads, 'cacleads' => $cacleads, 'mrktleads' => $mrktleads]);
     }
 
