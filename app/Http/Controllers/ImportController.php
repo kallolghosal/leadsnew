@@ -73,17 +73,17 @@ class ImportController extends Controller
                 $i = 0;
                 while (($line = fgetcsv($file, 1000)) !== false) {
                     $csv[$i]['platform'] = $line[11];
-                    $csv[$i]['exporting'] = $line[12];
-                    $csv[$i]['experience'] = $line[13];
-                    $csv[$i]['enterprise'] = $line[14];
-                    $csv[$i]['business_name'] = $line[15];
-                    $csv[$i]['business_type'] = $line[16];
-                    $csv[$i]['know_us'] = $line[17];
-                    $csv[$i]['full_name'] = $line[18];
-                    $csv[$i]['phone'] = substr($line[19], -10);
-                    $csv[$i]['email'] = $line[20];
-                    $csv[$i]['city'] = str_replace('Bangalore','Bengaluru',$line[21]);
-                    $csv[$i]['state'] = $line[22];
+                    $csv[$i]['exporting'] = $line[14];
+                    $csv[$i]['experience'] = $line[15];
+                    $csv[$i]['enterprise'] = $line[16];
+                    $csv[$i]['business_name'] = $line[17];
+                    $csv[$i]['business_type'] = $line[18];
+                    $csv[$i]['know_us'] = $line[19];
+                    $csv[$i]['full_name'] = $line[20];
+                    $csv[$i]['phone'] = substr($line[22], -10);
+                    $csv[$i]['email'] = $line[21];
+                    $csv[$i]['city'] = str_replace('Bangalore','Bengaluru',$line[13]);
+                    $csv[$i]['state'] = $line[12];
                     $csv[$i]['status'] = $line[23];
                     $i++;
                 }
