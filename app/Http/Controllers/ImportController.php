@@ -152,17 +152,17 @@ class ImportController extends Controller
                 while (($line = fgetcsv($file, 1000)) !== false) {
                     $csv [] = [
                     'platform' => $line[11],
-                    'exporting' => $line[12],
-                    'ecommexp' => $line[13],
-                    'enterprise' => $line[14],
-                    'business_name' => $line[15],
-                    'business_type' => $line[16],
-                    'hereabtus' => $line[17],
-                    'full_name' => $line[18],
-                    'phone' => substr($line[19], -10),
-                    'email' => $line[20],
-                    'city' => str_replace('Bangalore','Bengaluru',$line[21]),
-                    'state' => $line[22],
+                    'exporting' => $line[14],
+                    'ecommexp' => $line[15],
+                    'enterprise' => $line[16],
+                    'business_name' => $line[17],
+                    'business_type' => $line[18],
+                    'hereabtus' => $line[19],
+                    'full_name' => $line[20],
+                    'phone' => substr($line[22], -10),
+                    'email' => $line[21],
+                    'city' => str_replace('Bangalore','Bengaluru',$line[13]),
+                    'state' => $line[12],
                     'status' => $line[23],
                     'created_at' => date('Y-m-d')
                     ];
