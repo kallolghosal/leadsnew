@@ -40,20 +40,22 @@ class ExportController extends Controller
                 array_push($uniqueval, $k);
             }
         }
-
         foreach ($rangeid as $x=>$y) {
             if (!in_array($y, $uniqueval)) {
                 array_push($duplicates, $y);
             }
         }
-
+        
         /**
          * Dataset for all unique leads in the given range
          */
-        $data = FbLeadsModel::whereIn('id', $this->filterEmails($uniqueval))->whereIn('city', $cities)->get()->unique('phone');
+        $data = FbLeadsModel::whereIn('id', $this->filterEmails($uniqueval))->whereIn('city', $cities)->get();
 
-        $dataid = FbLeadsModel::whereIn('id', $this->filterEmails($uniqueval))->whereIn('city', $cities)->pluck('id')->unique('phone');
-        $dupids = array_diff($rangeid, array($dataid));
+        /**
+         * find duplicate row IDs
+         */
+        $dataid = FbLeadsModel::whereIn('id', $this->filterEmails($uniqueval))->whereIn('city', $cities)->pluck('id')->toArray();
+        $dupids = array_diff($rangeid, $dataid);
 
         /**
          * Dataset of duplicate rows in the given range
@@ -79,7 +81,7 @@ class ExportController extends Controller
             $file = fopen('php://output', 'w');
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 
-            fwrite($file, "Enique values"."\n");
+            fwrite($file, "Unique values"."\n");
             fputcsv($file, $columns);
             foreach ($data as $task) {
                 fputcsv($file, [
