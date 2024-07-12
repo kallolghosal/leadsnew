@@ -172,7 +172,7 @@ class ExportController extends Controller
             $file = fopen('php://output', 'w');
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 
-            fwrite($file, "Enique values"."\n");
+            fwrite($file, "Unique values"."\n");
             fputcsv($file, $columns);
             foreach ($data as $task) {
                 fputcsv($file, [
@@ -264,7 +264,7 @@ class ExportController extends Controller
             $file = fopen('php://output', 'w');
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 
-            fwrite($file, "Enique values"."\n");
+            fwrite($file, "Unique values"."\n");
             fputcsv($file, $columns);
             foreach ($data as $task) {
                 fputcsv($file, [
