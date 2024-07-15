@@ -45,13 +45,14 @@ class ImportController extends Controller
                 $i = 0;
                 while (($line = fgetcsv($file, 1000)) !== false) {
                     $csv[$i]['platform'] = $line[11];
-                    $csv[$i]['business_name'] = $line[14];
+                    $csv[$i]['business_name'] = $line[15];
                     $csv[$i]['full_name'] = $line[16];
-                    $csv[$i]['business_sector'] = $line[15];
+                    $csv[$i]['business_sector'] = $line[14];
                     $csv[$i]['state'] = $line[12];
                     $csv[$i]['city'] = str_replace('Bangalore','Bengaluru',$line[13]);
                     $csv[$i]['phone'] = substr($line[18], -10);
                     $csv[$i]['email'] = $line[17];
+                    $csv[$i]['remark'] = $line[19];
                     $i++;
                 }
             } elseif ($request->owner === 'cac') {
@@ -115,9 +116,9 @@ class ImportController extends Controller
                 while (($line = fgetcsv($file, 1000)) !== false) {
                     $csv [] = [
                     'platform' => $line[11],
-                    'business_name' => (strlen($line[14]) > 50) ? 'self' : $line[14],
+                    'business_name' => (strlen($line[15]) > 50) ? 'self' : $line[15],
                     'full_name' => (strlen($line[16]) > 50) ? 'self' : $line[16],
-                    'business_sector' => (strlen($line[15]) > 50) ? 'self' : $line[15],
+                    'business_sector' => (strlen($line[14]) > 50) ? 'self' : $line[14],
                     'state' => $line[12],
                     'city' => str_replace('Bangalore','Bengaluru',$line[13]),
                     'phone' => substr($line[18], -10),
