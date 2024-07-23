@@ -36,3 +36,7 @@ Route::get('export-cacdata/{st}/{nd}', [ExportController::class, 'exportCsvData'
 
 // Route to export WV Market data
 Route::get('mrkt-csv/{st}/{nd}', [ExportController::class, 'exportMrktData'])->name('download-mrktdata');
+
+// Route to list of uploade files
+Route::get('files', [HomeController::class, 'showfiles'])->name('files');
+Route::get('get-file/{id}', [HomeController::class, 'getfile'])->name('getfile');

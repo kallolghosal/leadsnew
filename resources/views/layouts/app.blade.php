@@ -81,6 +81,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('wv-leads') }}">WV</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('cac-leads') }}">CAC</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('wvmarket-leads') }}">WV Market</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('files') }}">Files</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('removeleads') }}">Remove</a></li>
                     </ul>
 

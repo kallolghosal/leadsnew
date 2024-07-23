@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\FbLeadsModel;
 use App\Models\CacLeadsModel;
 use App\Models\WvMrktLeads;
+use App\Models\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
@@ -57,6 +60,26 @@ class HomeController extends Controller
         $mrktleads = WvMrktLeads::paginate(12);
         $count = WvMrktLeads::count();
         return view('mrktleads', ['leads' => $mrktleads, 'count' => $count]);
+    }
+
+    /**
+     * Show all uploaded files list
+     */
+    public function showfiles () {
+        $files = File::paginate(10);
+        return view('files', ['files' => $files]);
+    }
+
+    /**
+     * Download the selected file
+     */
+    public function getfile ($id) {
+        $file = File::find($id);
+        $path = storage_path().'/'.'app/'.$file->path;
+        if (file_exists($path)) {
+            return Response::download($path);
+        }
+        
     }
 
     /**
