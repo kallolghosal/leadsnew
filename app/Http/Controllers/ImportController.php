@@ -26,7 +26,7 @@ class ImportController extends Controller
      */
     public function showCsvData (Request $request) {
         $validate = $request->validate([
-            'file' => 'required|mimes:csv,xls|max:200000'
+            'file' => 'required|mimes:csv|max:200000'
         ],[
             'file.required' => 'Please select the right filetype'
         ]);
