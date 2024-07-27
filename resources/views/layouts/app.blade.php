@@ -16,12 +16,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#exprt").on('click', function () {
-                var strt = $("#strt").val();
-                var endt = $("#endt").val();
+                var strt = parseInt($("#strt").val());
+                var endt = parseInt($("#endt").val());
                 var token = $("#token").val();
                 var owner = $("input[name=owner]:checked").val();
                 if (strt === '' || endt === '' || strt >= endt) {
-                    alert("No range selected");
+                    alert("No range selectedd");
                 } else {
                     if (token == 'cac' || owner == 'cac') {
                         window.location.href = '/export-cacdata/'+strt+'/'+endt;
