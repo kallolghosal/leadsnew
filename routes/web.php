@@ -40,3 +40,7 @@ Route::get('mrkt-csv/{st}/{nd}', [ExportController::class, 'exportMrktData'])->n
 // Route to list of uploade files
 Route::get('files', [HomeController::class, 'showfiles'])->name('files');
 Route::get('get-file/{id}', [HomeController::class, 'getfile'])->name('getfile');
+
+Route::get('users/{id}', function ($id) {
+    return 'User id is '.$id;
+});
